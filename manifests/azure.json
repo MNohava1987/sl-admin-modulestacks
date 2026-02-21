@@ -1,0 +1,10 @@
+{
+  "name": "terraform-azure-foundation",
+  "terraform_provider": "azure",
+  "description": "Standardized Azure Foundation Module",
+  "repository": "sl-modules-azure",
+  "branch": "main",
+  "vcs": {
+    "namespace": "MNohava1987"
+  }
+}
