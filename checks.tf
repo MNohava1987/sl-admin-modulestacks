@@ -48,3 +48,10 @@ check "module_names_lowercase" {
     error_message = "One or more module names contain uppercase characters."
   }
 }
+
+check "destructive_changes_require_repave_mode" {
+  assert {
+    condition     = var.enable_deletion_protection || var.repave_mode
+    error_message = "Disabling deletion protection requires repave_mode=true for explicit operator intent."
+  }
+}

@@ -43,6 +43,18 @@ variable "admin_context_name" {
   description = "Context name expected by the module factory."
 }
 
+variable "enable_deletion_protection" {
+  type        = bool
+  default     = false
+  description = "DANGER: If false, managed resources may be deleted. Keep true for normal operations."
+}
+
+variable "repave_mode" {
+  type        = bool
+  default     = true
+  description = "Set true only for intentional teardown/repave operations when deletion protection is disabled."
+}
+
 variable "enforce_lowercase_module_names" {
   type        = bool
   default     = true
