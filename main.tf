@@ -1,8 +1,9 @@
 # High Assurance Module Registry Management
 # This stack calls the m-orch factory to dynamically manage modules.
 
-data "spacelift_space_by_path" "admin" {
-  space_path = "root/Admin"
+# Resolve the modules parent space created by platform-spaces.
+data "spacelift_space_by_path" "modules_parent" {
+  space_path = "root/${local.env_root_space_name}/${var.modules_parent_space_name}"
 }
 
 # The Module Factory
@@ -19,6 +20,6 @@ module "spacelift_registry" {
   overrides_file = "${path.module}/config/_overrides.json"
 
   # Hierarchy
-  default_space_id   = data.spacelift_space_by_path.admin.id
-  admin_context_name = "global-context" # Ensure this context exists
+  default_space_id   = data.spacelift_space_by_path.modules_parent.id
+  admin_context_name = var.admin_context_name
 }
